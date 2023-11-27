@@ -1,10 +1,12 @@
-a = 3
+a = 9
 
 # IF
 if a == 3:
     print("Then shalt thou count to three, no more, no less.")
     print("Three shall be the number thou shalt count, and the number of the counting shall be three.")
     print("Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. ")
+else:
+    print ('Not three')
 
 n = int(input('Podaj liczbę'))
 print(n)
@@ -29,15 +31,19 @@ if (n == 17) or not (n == 17):
     print("Tertium non datur")
     print("Innej opcji nie ma")
 
+
+
 # := "Walrus" operator
 if (i := int(input("podaj liczbę naturalną"))) % 2 == 0:
     print(f'{i} jest parzyste')
 else:
     print(f'{i} jest nieparzyste')
 
-i = int(input("podaj liczbę naturalną"))
+i = int(input("podaj liczbę dwucyfrowa"))
 suma_cyfr = (i % 10 + i // 10)
 if (suma_cyfr % 7 == 0) and (i % 2 == 0):
     print(f'Dobra liczba')
 else:
     print(f'Zła liczba')
+
+
