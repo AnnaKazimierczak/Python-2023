@@ -45,3 +45,10 @@ for g in liczba:
 print(f"suma liczby{liczba} wynosi:{suma_liczb}")
 
 
+
+- wczytaj przy użyciu `input()` liczbę; wypisz sumę jej cyfr
+
+n=int(input('podaj liczbe'))
+suma= n%10 + n//10
+print(f'suma liczy {n} wynosi {suma}')
+
