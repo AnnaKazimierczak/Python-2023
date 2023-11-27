@@ -1,5 +1,4 @@
 n = 5
-
 while n > 0:
     print(n)
     n -= 1
@@ -53,11 +52,11 @@ else:
 n = 101
 while n > 1:
     n -= 1
-    if n % 7 == 0 and (n % 10 + n // 10) % 7 == 0:
+    if n % 2 == 0 and (n % 10 + n // 10) % 7 == 0:
         print(n)
         continue
- else:
-     print('Koniec')
+else:
+    print('Koniec')
 
 ##Rozwiązanie zadania
 
