@@ -58,3 +58,35 @@ s
 'a' in s
 
 s = {1: "a", 2: 'b', "ala": [3, 4]}
+
+#Zadanie
+
+l = []
+while True:
+    napis = input("Podaj słowo, a dodam ją do listy: ").strip()
+    if napis == "":
+        break
+    l.append(napis)
+l.sort()
+for i in range(1, len(l)):
+    if l[-1*i]%2 == 0:
+        print(f"Ostatnia parzysta liczba to: {l[-1*i]}")
+        break
+
+
+#zadanie
+l = []
+d = {}
+while True:
+    napis = input("Podaj napis, a dodam go do listy: ").strip()
+    if napis == "":
+        break
+    l.append(napis)
+#l = ['Ala', 'ma', 'kota', 'kota']
+for i in l:
+    if d.get(i, 0) == 0:
+        d[i]=1
+    else:
+        print (i)
+        d[i] += 1
+print(f"Tak się sprawy mają: {d}")

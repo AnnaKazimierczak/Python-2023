@@ -42,3 +42,24 @@ s2 = '.|.'
 s2.join(["Ala", "ma", "kota"])
 
 '.' in s2
+
+#Zadanie- rozwiązanie
+napisy = []
+
+while True:
+    napis = input("Wprowadź dowolne słowo: ")
+
+    if not napis:
+        break
+
+    napisy.append(napis)
+
+print(napisy.sort())
+
+#moje proby
+l = [1,2,3,'',4]
+for i in l:
+    if i < 0:
+        print(i)
+    else i = ' ':
+    break
