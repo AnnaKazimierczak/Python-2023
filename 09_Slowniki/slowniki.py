@@ -59,8 +59,9 @@ s
 
 s = {1: "a", 2: 'b', "ala": [3, 4]}
 
-#Zadanie
-
+#Zadanie 1 (pierwsze rozwizanie)
+# - Dla listy napisów pobranej w pętli z wejścia wypisać słownik ilości wystąpień napisów
+#   - np. dla `['Ala', 'ma' 'kota', 'kota']` wypisać `{'Ala': 1, 'ma': 1, ;'kota': 2}`
 l = []
 while True:
     napis = input("Podaj słowo, a dodam ją do listy: ").strip()
@@ -74,7 +75,10 @@ for i in range(1, len(l)):
         break
 
 
-#zadanie
+#zadanie 1
+# - Dla listy napisów pobranej w pętli z wejścia wypisać słownik ilości wystąpień napisów
+#   - np. dla `['Ala', 'ma' 'kota', 'kota']` wypisać `{'Ala': 1, 'ma': 1, ;'kota': 2}`
+
 l = []
 d = {}
 while True:
@@ -90,3 +94,15 @@ for i in l:
         print (i)
         d[i] += 1
 print(f"Tak się sprawy mają: {d}")
+
+# Zadanie 2
+# - Dla wczytanej liczby z wejścia z zakresu 1-999 wypisać jej postać słowną
+#   - np. dla `73` wypisać `siedemdziesiąt trzy`
+
+a=[]
+while True:
+    cyfra = input("Podaj liczbę od 1 do 999").strip()
+    if cyfra == "":
+        break
+    a.append(cyfra)
+    print(a)
