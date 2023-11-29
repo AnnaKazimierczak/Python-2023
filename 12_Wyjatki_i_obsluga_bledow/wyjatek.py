@@ -26,7 +26,7 @@ n = int(input('podaj liczbe'))
 suma = n % 10 + n // 10
 print(f'suma liczy {n} wynosi {suma}')
 
-#Zadanie- inne rozwiązanie
+#Zadanie- inne rozwiązanie do analizy
 
 liczba = 0
 while True:
