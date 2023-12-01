@@ -66,7 +66,7 @@ def remove_tag(name, session):
 
 @app.route('/')
 def hello():
-    return render_template('form_do_zadania.html', data=get_tags(db.session),
+    return render_template('form_do_zadania.html', data=get_tags(db.session),notes= get_notes(db.session),
                            tytul="Użytkownicy", no_error=True)
 
 @app.route('/add')
@@ -74,7 +74,7 @@ def add():
     args = request.args
     create_tag(args["tag"], db.session)
 
-    return render_template('form_do_zadania.html', data=get_tags(db.session),
+    return render_template('form_do_zadania.html', data=get_tags(db.session),notes= get_notes(db.session),
                            tytul="Dodano Tag")
 
 @app.route('/remove')
@@ -82,7 +82,7 @@ def remove():
     args = request.args
     remove_tag(args["tag"], db.session)
 
-    return render_template('form_do_zadania.html', data=get_tags(db.session),
+    return render_template('form_do_zadania.html', data=get_tags(db.session),notes= get_notes(db.session)
                            tytul="Usunięto Tag")
 
 @app.route('/add_note')
@@ -90,7 +90,7 @@ def add_note():
     args = request.args
     create_tag(args["note"], db.session)
 
-    return render_template('form_do_zadania.html', data=get_notes(db.session),
+    return render_template('form_do_zadania.html', data=get_notes(db.session),notes= get_notes(db.session)
                            tytul="Dodano notatke")
 
 @app.route('/remove_note')
@@ -98,5 +98,5 @@ def remove_note():
     args = request.args
     remove_tag(args["note"], db.session)
 
-    return render_template('form_do_zadania.html', data=get_notes(db.session),
+    return render_template('form_do_zadania.html', data=get_notes(db.session),notes= get_notes(db.session)
                            tytul="Usunięto notatke")
