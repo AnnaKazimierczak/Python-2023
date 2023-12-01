@@ -9,7 +9,7 @@ data = []
 
 @app.route('/')
 def hello():
-    return render_template('form.html', data=data, tytul="To jest tytul z parametru")
+    return render_template('form.html', data=data, tytul='Cześć' + [name])
 
 
 
@@ -20,5 +20,5 @@ def add():
     print(args)
     data.append(args["name"])
 
-    return render_template('form.html', data=data, tytul='Cześć' + [name])
+    return render_template('form.html', data=data, tytul='Dodano do listy')
 
