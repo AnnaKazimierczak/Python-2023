@@ -17,44 +17,37 @@ db = SQLAlchemy(app)
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    usertag = db.Column(db.String(80), unique=True, nullable=False)
+    tagname = db.Column(db.String(80), unique=True, nullable=False)
 
     def __repr__(self):
-        return '<Tag %r>' % self.usertag
+        return '<Tag %r>' % self.tagname
 
 
-def get_users(session):
+def get_tags(session):
     return session.query(Tag).all()
 
 
-# def create_user(name, session):
-#     try:
-#         user = User(username=name)
-#         session.add(user)
-#         session.commit()
-#     except sqlalchemy.exc.IntegrityError as e:
-#         print(e)
-#         session.rollback()
-#         return False
-#     else:
-#         return True
+def create_tag(name, session):
+     tag = Tag(tagname=name)
+     session.add(tag)
+     session.commit()
 
 
 @app.route('/')
 def hello():
-    return render_template('form.html', data=get_users(db.session),
+    return render_template('form.html', data=get_tags(db.session),
                            tytul="Użytkownicy", no_error=True)
 
 
 @app.route('/add')
 def add():
     args = request.args
-    no_error = create_user(args["name"], db.session)
+    no_error = create_tag(args["name"], db.session)
     if no_error:
-        tytul = "Dodano użytkownika"
+        tytul = "Dodano Tag"
     else:
-        tytul = "Taki użytkownik już istnieje"
+        tytul = "Taki Tag już istnieje"
 
-    return render_template('form.html', data=get_users(db.session),
+    return render_template('form.html', data=get_tags(db.session),
                            no_error=no_error,
                            tytul=tytul)
