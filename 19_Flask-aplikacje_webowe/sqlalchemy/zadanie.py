@@ -22,32 +22,44 @@ class Tag(db.Model):
     def __repr__(self):
         return '<Tag %r>' % self.tagname
 
-
 def get_tags(session):
     return session.query(Tag).all()
 
 
 def create_tag(name, session):
-     tag = Tag(tagname=name)
-     session.add(tag)
-     session.commit()
+    try:                                #try -except oraz else jest do obsługi błędów, żeby nie dodało dwa razy tego samego imienia
+         tag = Tag(tagname=name)
+         session.add(tag)
+         session.commit()
+    except sqlalchemy.exc.IntegrityError as e:
+         print(e)
+         session.rollback()
+         return False
+    else:
+         return True
 
+def remove_tag(name, session):
+    tag = session.query(Tag).filter_by(tagname=name).one()
+    session.delete(tag)
+    session.commit()
 
 @app.route('/')
 def hello():
-    return render_template('form.html', data=get_tags(db.session),
+    return render_template('form_do_zadania.html', data=get_tags(db.session),
                            tytul="Użytkownicy", no_error=True)
-
 
 @app.route('/add')
 def add():
     args = request.args
-    no_error = create_tag(args["name"], db.session)
-    if no_error:
-        tytul = "Dodano Tag"
-    else:
-        tytul = "Taki Tag już istnieje"
+    create_tag(args["tag"], db.session)
 
-    return render_template('form.html', data=get_tags(db.session),
-                           no_error=no_error,
-                           tytul=tytul)
+    return render_template('form_do_zadania.html', data=get_tags(db.session),
+                           tytul="Dodano Tag")
+
+@app.route('/remove')
+def remove():
+    args = request.args
+    remove_tag(args["tag"], db.session)
+
+    return render_template('form_do_zadania.html', data=get_tags(db.session),
+                           tytul="Usunięto Tag")
